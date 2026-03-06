@@ -1,0 +1,109 @@
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+    pointer-events: none;
+    /* Let container be transparent to clicks */
+}
+
+.navbar {
+    pointer-events: auto;
+    /* Enable clicks inside the actual navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    height: var(--navbar-height);
+    padding: 0 24px;
+    background: rgba(255, 255, 255, 0.3);
+    /* Slightly more transparent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--border-radius-pill);
+    box-shadow: 0 4px 30px var(--color-glass-shadow);
+    transition: var(--transition-medium);
+}
+
+.navbar.scrolled {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    color: #ff4500;
+    /* Flame-like color for logo */
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 16px;
+    border-radius: var(--border-radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    padding: 8px 16px;
+    border-radius: var(--border-radius-pill);
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-separator {
+    width: 4px;
+    height: 4px;
+    background-color: #d1d5db;
+    border-radius: 1px;
+}
+
+.navbar-cta-wrapper {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.navbar-cta-wrapper:hover {
+    transform: translateY(-2px);
+}
+
+.navbar-cta-wrapper .liquid-badge {
+    padding: 8px 22px;
+    /* Slightly tighter for navbar */
+    font-size: 0.9rem;
+    height: 40px;
+    /* Force height for perfect centering */
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        /* Hide on mobile for simplicity, but in real web app we use a hamburger */
+    }
+}

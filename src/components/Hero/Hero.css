@@ -1,0 +1,263 @@
+/* Hero Container Layout */
+.hero-section {
+    width: 100%;
+    padding-top: calc(var(--navbar-height) + 80px);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 80px;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* 1. Top Badge - IMPROVED FROSTY */
+.hero-badge-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hero-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 6px 16px 6px 6px;
+    border-radius: 99px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.avatar-group {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-group img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -10px;
+    background: var(--color-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-group img:first-child {
+    margin-left: 0;
+}
+
+.badge-text {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.badge-highlight {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #f59e0b;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 2. Main Layout Split */
+.hero-main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .hero-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 5.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #0f172a;
+    letter-spacing: -0.04em;
+}
+
+/* Pseudo 3D Glass Icons - FROSTY UPDATE */
+.glass-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    margin: 0 8px;
+    vertical-align: middle;
+}
+
+.glass-icon-green {
+    background: linear-gradient(135deg, rgba(220, 252, 231, 0.8) 0%, rgba(134, 239, 172, 0.8) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 8px 16px rgba(34, 197, 94, 0.15),
+        inset 0 3px 6px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    color: #166534;
+    font-size: 0.7em;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+.glass-icon-silver {
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(226, 232, 240, 0.8) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 8px 16px rgba(100, 116, 139, 0.15),
+        inset 0 3px 6px rgba(255, 255, 255, 1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+    font-size: 0.75em;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .hero-right {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.5;
+    color: #475569;
+    font-weight: 400;
+    max-width: 480px;
+}
+
+.hero-cta-wrapper {
+    cursor: pointer;
+    border-radius: 99px;
+    transition: transform var(--transition-medium);
+}
+
+.hero-cta-wrapper .liquid-badge {
+    padding: 14px 44px;
+    font-size: 1.1rem;
+    height: 56px;
+    /* Larger Hero Button */
+}
+
+.hero-cta-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.hero-cta:hover .cta-arrow {
+    transform: translate(2px, -2px);
+}
+
+/* 3. Bottom Features Glass Bar - FROSTY UPGRADE */
+.hero-features-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-features {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(40px) saturate(160%);
+    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 99px;
+    padding: 16px 40px;
+    margin-top: 20px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        inset 0 0 30px rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-features::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+    background-size: 8px 8px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(226, 232, 240, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.06),
+        inset 0 2px 4px white;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .hero-features {
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 20px;
+        padding: 24px;
+        align-items: flex-start;
+    }
+}
