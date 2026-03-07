@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket, CodeXml, Clock, BrainCircuit, Box } from 'lucide-react';
 import MagneticIcon from '../Common/MagneticIcon';
+import HeroBackground from './HeroBackground';
 import './Hero.css';
 
 const Hero = () => {
@@ -32,7 +33,10 @@ const Hero = () => {
     };
 
     return (
-        <section className="hero-section">
+        <section className="hero-section" aria-label="Hero — Craft and Launch with Velocity">
+            {/* 3D Cursor-Responsive Background */}
+            <HeroBackground />
+
             <motion.div
                 className="hero-container"
                 variants={containerVariants}
@@ -44,9 +48,9 @@ const Hero = () => {
                 <motion.div className="hero-badge-container" variants={itemVariants}>
                     <div className="hero-trust-badge">
                         <div className="avatar-group">
-                            <img src="https://i.pravatar.cc/100?img=11" alt="founder" />
-                            <img src="https://i.pravatar.cc/100?img=12" alt="founder" />
-                            <img src="https://i.pravatar.cc/100?img=13" alt="founder" />
+                            <img src="https://i.pravatar.cc/100?img=11" alt="Startup founder testimonial avatar" loading="lazy" />
+                            <img src="https://i.pravatar.cc/100?img=12" alt="Startup founder testimonial avatar" loading="lazy" />
+                            <img src="https://i.pravatar.cc/100?img=13" alt="Startup founder testimonial avatar" loading="lazy" />
                         </div>
                         <span className="badge-text">Loved by forward-thinking startups.</span>
                         <span className="badge-highlight">⚡ FAST</span>

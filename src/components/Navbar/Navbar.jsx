@@ -23,13 +23,13 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} aria-label="Main navigation">
         <div className="navbar-logo">
-          <img className="logo-icon" src="/logo.png" alt="ElixorTech Logo" />
-          <span className="logo-text">ElixorTech.</span>
+          <img className="logo-icon" src="/logo.png" alt="Elixor Technologies Logo" />
+          <span className="logo-text">Elixor Technologies.</span>
         </div>
 
-        <ul className="navbar-links">
+        <ul className="navbar-links" role="list" aria-label="Page sections">
           {navLinks.map((link, index) => (
             <React.Fragment key={link.name}>
               <li>

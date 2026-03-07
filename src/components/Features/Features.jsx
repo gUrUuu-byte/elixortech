@@ -19,7 +19,7 @@ const Features = () => {
     };
 
     return (
-        <section className="features-section" id="process">
+        <section className="features-section" id="process" aria-label="Why choose Elixor Technologies">
 
             {/* Soft Glow behind the title */}
             <div className="section-glow"></div>
@@ -106,7 +106,7 @@ const Features = () => {
 
             </motion.div>
 
-            {/* 4. "Why ElixorTech" Header & Cards */}
+            {/* 4. "Why Elixor Technologies" Header & Cards */}
             <motion.div
                 className="features-secondary-content"
                 initial="hidden"
@@ -117,7 +117,7 @@ const Features = () => {
                 <div className="secondary-glow"></div>
                 <div className="liquid-badge-wrapper">
                     <div className="liquid-badge">
-                        <span className="badge-content-text">Why ElixorTech?</span>
+                        <span className="badge-content-text">Why Elixor Technologies?</span>
                         <div className="liquid-container">
                             <div className="liquid-wave wave-1"></div>
                             <div className="liquid-wave wave-2"></div>

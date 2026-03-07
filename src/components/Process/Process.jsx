@@ -21,7 +21,7 @@ const Process = () => {
     };
 
     return (
-        <section className="process-section" id="detailed-process">
+        <section className="process-section" id="detailed-process" aria-label="Our development process">
             <div className="process-glass-container">
 
                 {/* Top Glowing Mesh */}

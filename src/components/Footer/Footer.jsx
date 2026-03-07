@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer" id="footer">
+        <footer className="footer" id="footer" role="contentinfo" aria-label="Site footer">
             <div className="footer-container">
 
                 {/* 1. TOP CTA DARK CARD - Premium Software Feel */}
@@ -50,8 +50,8 @@ const Footer = () => {
                         {/* Column 1: Branding */}
                         <div className="footer-col branding-col">
                             <div className="footer-logo">
-                                <img className="logo-icon" src="/logo.png" alt="ElixorTech Logo" />
-                                <span>ElixorTech.</span>
+                                <img className="logo-icon" src="/logo.png" alt="Elixor Technologies Logo" />
+                                <span>Elixor Technologies.</span>
                             </div>
                             <p className="footer-branding-desc">
                                 We are the mission control for founders looking to build, validate, and scale MVPs in record time.
@@ -63,7 +63,7 @@ const Footer = () => {
                         </div>
 
                         {/* Link Columns */}
-                        <div className="links-group">
+                        <div className="links-group" role="navigation" aria-label="Footer navigation">
                             <div className="footer-col">
                                 <h4>Agency</h4>
                                 <a href="#home">Home</a>
@@ -80,10 +80,10 @@ const Footer = () => {
                             </div>
                             <div className="footer-col">
                                 <h4>Connect</h4>
-                                <a href="#" className="social-link"><Twitter size={14} /> X (Twitter)</a>
-                                <a href="#" className="social-link"><Linkedin size={14} /> LinkedIn</a>
-                                <a href="#" className="social-link"><Youtube size={14} /> YouTube</a>
-                                <a href="#" className="social-link"><Github size={14} /> GitHub</a>
+                                <a href="#" className="social-link" aria-label="Follow Elixor Technologies on X (Twitter)" rel="noopener noreferrer"><Twitter size={14} /> X (Twitter)</a>
+                                <a href="#" className="social-link" aria-label="Follow Elixor Technologies on LinkedIn" rel="noopener noreferrer"><Linkedin size={14} /> LinkedIn</a>
+                                <a href="#" className="social-link" aria-label="Subscribe to Elixor Technologies on YouTube" rel="noopener noreferrer"><Youtube size={14} /> YouTube</a>
+                                <a href="#" className="social-link" aria-label="View Elixor Technologies GitHub" rel="noopener noreferrer"><Github size={14} /> GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ const Footer = () => {
                 {/* 3. BOTTOM BAR */}
                 <div className="footer-bottom">
                     <div className="copyright">
-                        © 2024 ElixorTech. All rights reserved
+                        © 2024 Elixor Technologies. All rights reserved
                     </div>
                     <div className="footer-legal">
                         <a href="#privacy">Privacy Policy</a>

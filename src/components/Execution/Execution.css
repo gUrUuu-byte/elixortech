@@ -311,12 +311,26 @@
 }
 
 @media (max-width: 768px) {
+    .execution-section {
+        padding: 80px 16px 100px;
+    }
+
     .execution-headline {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .comparison-glass-card {
         padding: 40px 20px;
+        border-radius: 24px;
+    }
+
+    .comparison-title {
+        font-size: 1.5rem;
+    }
+
+    .comparison-desc {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
     }
 
     .bar-main {
@@ -328,5 +342,43 @@
     .bar-pill {
         width: 100%;
         flex: none;
+        font-size: 1rem;
+        padding: 14px 18px;
+    }
+
+    .metric-value {
+        font-size: 2.2rem;
+    }
+
+    .metric-unit {
+        font-size: 1.1rem;
+    }
+
+    .service-pill .pill-inner {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .execution-section {
+        padding: 60px 12px 80px;
+    }
+
+    .execution-headline {
+        font-size: 1.6rem;
+    }
+
+    .comparison-glass-card {
+        padding: 28px 16px;
+    }
+
+    .comparison-title {
+        font-size: 1.3rem;
+    }
+
+    .service-pill .pill-inner {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }

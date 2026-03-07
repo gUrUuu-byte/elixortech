@@ -1,0 +1,141 @@
+/* =============================================
+   CUSTOM CURSOR — Glowing Teal (works on ALL backgrounds)
+   No blend modes. Pure bright glow visibility.
+   ============================================= */
+
+/* Hide native cursor */
+@media (pointer: fine) {
+
+    html,
+    html * {
+        cursor: none !important;
+    }
+
+    input,
+    textarea,
+    select,
+    [contenteditable="true"] {
+        cursor: text !important;
+    }
+}
+
+/* ---- Container ---- */
+.cursor-wrapper {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    transition: opacity 0.35s ease;
+}
+
+/* ---- Outer Ring ---- */
+.cursor-ring {
+    position: fixed;
+    width: 44px;
+    height: 44px;
+    margin-left: -22px;
+    margin-top: -22px;
+    border-radius: 50%;
+    border: 2px solid #14b8a6;
+    pointer-events: none;
+    z-index: 999998;
+    will-change: transform;
+    /* Teal glow that punches through any background */
+    box-shadow:
+        0 0 10px rgba(20, 184, 166, 0.5),
+        0 0 25px rgba(20, 184, 166, 0.2),
+        inset 0 0 8px rgba(20, 184, 166, 0.15);
+    transition:
+        width 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        height 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        margin 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.25s ease;
+}
+
+/* Hovering clickable elements */
+.cursor-ring.hovering {
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -32px;
+    border-color: rgba(20, 184, 166, 0.4);
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, transparent 70%);
+    box-shadow:
+        0 0 20px rgba(20, 184, 166, 0.5),
+        0 0 40px rgba(20, 184, 166, 0.15);
+}
+
+/* Pressed */
+.cursor-ring.clicked {
+    width: 36px;
+    height: 36px;
+    margin-left: -18px;
+    margin-top: -18px;
+    border-color: #22d3ee;
+    box-shadow:
+        0 0 15px rgba(34, 211, 238, 0.6),
+        0 0 35px rgba(34, 211, 238, 0.2);
+}
+
+/* ---- Central Dot ---- */
+.cursor-dot {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-top: -5px;
+    border-radius: 50%;
+    /* Bright vivid teal — always visible */
+    background: #14b8a6;
+    pointer-events: none;
+    z-index: 999999;
+    will-change: transform, opacity;
+    /* Strong multi-layer glow for maximum visibility */
+    box-shadow:
+        0 0 6px #14b8a6,
+        0 0 14px rgba(20, 184, 166, 0.7),
+        0 0 30px rgba(20, 184, 166, 0.3);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Dot hides on hover */
+.cursor-dot.hovering {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Click pulse */
+.cursor-dot.clicked {
+    background: #22d3ee;
+    box-shadow:
+        0 0 8px #22d3ee,
+        0 0 18px rgba(34, 211, 238, 0.8),
+        0 0 40px rgba(34, 211, 238, 0.3);
+}
+
+/* ---- Hover Label ---- */
+.cursor-label {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000000;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #14b8a6;
+    text-shadow: 0 0 8px rgba(20, 184, 166, 0.6);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cursor-label.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}

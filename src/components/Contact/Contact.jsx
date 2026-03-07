@@ -80,7 +80,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="contact-section" id="contact">
+        <section className="contact-section" id="contact" aria-label="Schedule a meeting with Elixor Technologies">
             {/* Ambient Background Elements */}
             <div className="contact-bg-glow glow-1"></div>
             <div className="contact-bg-glow glow-2"></div>

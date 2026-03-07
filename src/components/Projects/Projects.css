@@ -1,16 +1,20 @@
+/* =============================================
+   PROJECTS SECTION — Background & Header
+   ============================================= */
+
 .projects-section {
-    padding: 160px 20px 200px;
+    padding: 160px 20px 100px;
+    /* Restored bottom padding so last card naturally falls out of sticky context */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     z-index: 10;
-    /* Reverting to Cyan while keeping the "perfect" 40% bottom-up structure and lining */
     background: linear-gradient(to top, #ecfeff 0%, #ffffff 600px);
-    overflow: hidden;
+    overflow: clip;
 }
 
-/* Granular Pixelated Texture - Masked to Gradient */
+/* Granular noise texture */
 .projects-section::before {
     content: '';
     position: absolute;
@@ -24,7 +28,7 @@
     -webkit-mask-image: linear-gradient(to top, black 0%, transparent 600px);
 }
 
-/* Finer White Vertical Frequency Lines */
+/* Frequency lines at footer edge */
 .projects-section::after {
     content: '';
     position: absolute;
@@ -32,7 +36,11 @@
     left: 0;
     width: 100%;
     height: 100px;
-    background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.95) 0px, rgba(255, 255, 255, 0.95) 1.5px, transparent 1.5px, transparent 16px);
+    background-image: repeating-linear-gradient(to right,
+            rgba(255, 255, 255, 0.95) 0px,
+            rgba(255, 255, 255, 0.95) 1.5px,
+            transparent 1.5px,
+            transparent 16px);
     mask-image: linear-gradient(to top, black 25px, transparent 100px);
     -webkit-mask-image: linear-gradient(to top, black 25px, transparent 100px);
     opacity: 0.95;
@@ -46,7 +54,10 @@
     left: 40%;
     width: 800px;
     height: 600px;
-    background: radial-gradient(circle, rgba(167, 243, 208, 0.1) 0%, rgba(186, 230, 253, 0.05) 50%, transparent 70%);
+    background: radial-gradient(circle,
+            rgba(167, 243, 208, 0.1) 0%,
+            rgba(186, 230, 253, 0.05) 50%,
+            transparent 70%);
     filter: blur(80px);
     pointer-events: none;
     z-index: 0;
@@ -78,138 +89,142 @@
     max-width: 600px;
 }
 
-/* PROJECTS LIST */
-.projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+/* =============================================
+   STACKING CARD LIST
+   ============================================= */
+
+.stack-list {
     width: 100%;
     max-width: 1140px;
     position: relative;
     z-index: 2;
-    padding-bottom: 25vh;
+    /* padding-bottom: 20vh; - Removed to prevent gap before next section */
 }
 
-.project-card-wrapper {
-    z-index: 1;
-    /* Each card's outer layer has some base index */
-}
+/* =============================================
+   THE CARD — Pure CSS sticky, no JS transforms
+   ============================================= */
 
-/* Ensure next card has a higher relative overlap priority */
-.project-card-wrapper:nth-child(2) {
-    z-index: 2;
-}
-
-.project-card-wrapper:nth-child(3) {
-    z-index: 3;
-}
-
-.project-card-wrapper:nth-child(4) {
-    z-index: 4;
-}
-
-.project-card-wrapper:nth-child(5) {
-    z-index: 5;
-}
-
-/* PROJECT CARD HORIZONTAL */
-.project-card-horizontal {
+.stack-card {
     position: sticky;
-    top: 100px;
-    /* Fallback, overridden by react inline styles */
+    display: flex;
+    align-items: stretch;
+    min-height: 440px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(40px) saturate(150%);
     -webkit-backdrop-filter: blur(40px) saturate(150%);
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.05),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-    display: flex;
-    align-items: stretch;
-    overflow: hidden;
-    min-height: 400px;
-    will-change: transform, opacity;
-    transform-style: preserve-3d;
+        0 12px 48px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.45);
     transition: box-shadow 0.4s ease;
 }
 
-.project-card-horizontal.image-right {
+.stack-card:hover {
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(100, 200, 255, 0.06);
+}
+
+.stack-card.image-right {
     flex-direction: row-reverse;
 }
 
-.project-card-horizontal:hover {
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
-        0 0 40px rgba(100, 200, 255, 0.08);
-}
-
-
-
-.project-image-container {
+/* ---- Image ---- */
+.stack-card-image {
     flex: 1.2;
     position: relative;
     overflow: hidden;
     min-height: 300px;
 }
 
-.project-image {
+.stack-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    will-change: transform;
-    transition: filter 0.6s ease, transform 0.6s ease;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
-.project-card-horizontal:hover .project-image {
-    filter: brightness(1.05) contrast(1.02);
+.stack-card:hover .stack-card-image img {
     transform: scale(1.03);
 }
 
-.project-stacked-dim {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 50;
-    pointer-events: none;
-    will-change: opacity;
-}
-
-/* Subtle gradient overlay on image for depth */
-.project-image-overlay {
+.stack-card-image-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg,
             rgba(0, 0, 0, 0.03) 0%,
             transparent 40%,
             transparent 60%,
-            rgba(0, 0, 0, 0.06) 100%);
+            rgba(0, 0, 0, 0.05) 100%);
     pointer-events: none;
-    z-index: 1;
 }
 
+/* ---- Content ---- */
+.stack-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 55px;
+    position: relative;
+    z-index: 2;
+}
+
+.stack-card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.stack-card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.stack-card-desc {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.65;
+    margin-bottom: 32px;
+    flex: 1;
+}
+
+.stack-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ---- Glow ---- */
 .project-card-glow {
     position: absolute;
     top: -50px;
     right: -50px;
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
     filter: blur(80px);
     z-index: 0;
-    will-change: opacity;
     transition: transform 0.6s ease;
+    pointer-events: none;
 }
 
-.project-card-horizontal:hover .project-card-glow {
+.stack-card:hover .project-card-glow {
     transform: scale(1.3);
 }
 
-/* Card Specific Colors */
+/* ---- Card color themes ---- */
 .card-blue .project-card-glow {
-    background: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.35);
 }
 
 .card-blue .project-icon-box {
@@ -217,9 +232,8 @@
     background: #e0f2fe;
 }
 
-
 .card-purple .project-card-glow {
-    background: rgba(192, 132, 252, 0.4);
+    background: rgba(192, 132, 252, 0.35);
 }
 
 .card-purple .project-icon-box {
@@ -227,9 +241,8 @@
     background: #f3e8ff;
 }
 
-
 .card-green .project-card-glow {
-    background: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.35);
 }
 
 .card-green .project-icon-box {
@@ -237,9 +250,8 @@
     background: #dcfce7;
 }
 
-
 .card-orange .project-card-glow {
-    background: rgba(251, 146, 60, 0.4);
+    background: rgba(251, 146, 60, 0.35);
 }
 
 .card-orange .project-icon-box {
@@ -247,16 +259,7 @@
     background: #ffedd5;
 }
 
-
-.project-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    position: relative;
-    z-index: 2;
-}
-
+/* ---- Shared sub-elements ---- */
 .project-icon-box {
     width: 50px;
     height: 50px;
@@ -298,37 +301,6 @@
     transform: translateY(-2px);
 }
 
-.project-content-horizontal {
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 60px;
-}
-
-.project-title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #0f172a;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
-}
-
-.project-desc {
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.6;
-    margin-bottom: 32px;
-    flex: 1;
-}
-
-.project-tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
 .tech-tag {
     font-size: 0.75rem;
     font-weight: 600;
@@ -348,26 +320,85 @@
     border-color: rgba(203, 213, 225, 1);
 }
 
-/* RESPONSIVE */
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
 @media (max-width: 900px) {
 
-    .project-card-horizontal,
-    .project-card-horizontal.image-right {
+    .stack-card,
+    .stack-card.image-right {
         flex-direction: column;
     }
 
-    .project-image-container {
-        height: 300px;
+    .stack-card-image {
+        height: 260px;
         flex: none;
     }
 
-    .project-content-horizontal {
-        padding: 40px;
+    .stack-card-content {
+        padding: 32px;
     }
 }
 
 @media (max-width: 768px) {
+    .projects-section {
+        padding: 80px 16px 0;
+    }
+
     .projects-headline {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    .projects-subtext {
+        font-size: 0.95rem;
+    }
+
+    .stack-card {
+        min-height: auto;
+        border-radius: 20px;
+    }
+
+    .stack-card-image {
+        height: 200px;
+    }
+
+    .stack-card-content {
+        padding: 24px 20px;
+    }
+
+    .stack-card-title {
+        font-size: 1.4rem;
+    }
+
+    .stack-card-desc {
+        font-size: 0.85rem;
+    }
+
+    .stack-card-tags {
+        gap: 6px;
+    }
+
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: 60px 12px 0;
+    }
+
+    .projects-headline {
+        font-size: 1.5rem;
+    }
+
+    .stack-card-image {
+        height: 160px;
+    }
+
+    .stack-card-content {
+        padding: 20px 16px;
     }
 }

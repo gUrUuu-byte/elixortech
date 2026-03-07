@@ -19,7 +19,7 @@ const Execution = () => {
     };
 
     return (
-        <section className="execution-section" id="execution">
+        <section className="execution-section" id="execution" aria-label="Services and delivery speed">
             {/* Ambient Background Glow */}
             <div className="execution-bg-glow"></div>
 
@@ -82,11 +82,11 @@ const Execution = () => {
                 </p>
 
                 <div className="comparison-bars-layout">
-                    {/* ElixorTech Bar */}
+                    {/* Elixor Technologies Bar */}
                     <div className="comp-bar elixor-bar">
                         <div className="bar-main">
                             <div className="bar-pill elixor-pill">
-                                <span className="pill-text">with ElixorTech</span>
+                                <span className="pill-text">with Elixor Technologies</span>
                                 <div className="pill-glow-icon">
                                     <Zap size={14} fill="#059669" strokeWidth={0} />
                                 </div>

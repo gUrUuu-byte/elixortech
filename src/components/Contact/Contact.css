@@ -4,6 +4,10 @@
     overflow: hidden;
     /* Soft Indigo Gradient emerging from bottom - Matching Screenshot Style */
     background: linear-gradient(to top, #e0e7ff 0%, #ffffff 600px);
+
+    /* z-index ensures it slides over the pinned projects section */
+    position: relative;
+    z-index: 20;
 }
 
 /* Granular Pixelated Texture - Masked to Gradient */
@@ -373,5 +377,37 @@
 
     .form-row {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 80px 16px 100px;
+    }
+
+    .contact-headline {
+        font-size: 2rem;
+    }
+
+    .contact-subtext {
+        font-size: 0.95rem;
+    }
+
+    .contact-form {
+        padding: 28px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 60px 12px 80px;
+    }
+
+    .contact-headline {
+        font-size: 1.6rem;
+    }
+
+    .contact-form {
+        padding: 20px 16px;
     }
 }

@@ -535,3 +535,67 @@
     line-height: 1.5;
     color: #475569;
 }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+    .why-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-section {
+        padding: 80px 16px 100px;
+    }
+
+    .stats-main-headline {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .stats-cards-row {
+        gap: 16px;
+        margin-bottom: 50px;
+    }
+
+    .stat-card {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 14px 18px;
+    }
+
+    .features-secondary-content {
+        padding: 40px 0;
+    }
+
+    .why-labs-headline {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .why-cards-grid {
+        gap: 20px;
+    }
+
+    .why-card {
+        padding: 24px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-section {
+        padding: 60px 12px 80px;
+    }
+
+    .stat-card-text {
+        font-size: 0.9rem;
+    }
+
+    .why-card-content h3 {
+        font-size: 1.05rem;
+    }
+
+    .why-card-content p {
+        font-size: 0.85rem;
+    }
+}
