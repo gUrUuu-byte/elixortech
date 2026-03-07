@@ -66,10 +66,9 @@
 }
 
 .logo-icon {
-    width: 24px;
-    height: 24px;
-    color: #ff4500;
-    /* Flame-like color for logo */
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 .navbar-links {

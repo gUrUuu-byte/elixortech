@@ -229,9 +229,9 @@
 }
 
 .footer-logo .logo-icon {
-    width: 28px;
-    height: 28px;
-    color: #ff4500;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
 }
 
 .footer-branding-desc {

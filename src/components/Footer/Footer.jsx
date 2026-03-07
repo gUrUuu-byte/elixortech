@@ -50,9 +50,7 @@ const Footer = () => {
                         {/* Column 1: Branding */}
                         <div className="footer-col branding-col">
                             <div className="footer-logo">
-                                <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C8 2 6 8 6 12C6 15.3137 8.68629 18 12 18C15.3137 18 18 15.3137 18 12C18 10.6667 17.5 9.5 16 8C17 9.5 17 11.5 17 11.5C17 14.2614 14.7614 16.5 12 16.5C9.23858 16.5 7.5 14.2614 7.5 11.5C7.5 9 10 4.5 12 2Z" fill="currentColor" />
-                                </svg>
+                                <img className="logo-icon" src="/logo.png" alt="ElixorTech Logo" />
                                 <span>ElixorTech.</span>
                             </div>
                             <p className="footer-branding-desc">

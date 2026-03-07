@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Github, Code2, Layers, Smartphone, Sparkles } from 'lucide-react';
+import { ExternalLink, Code2, Layers, Smartphone, Sparkles } from 'lucide-react';
 import MagneticIcon from '../Common/MagneticIcon';
 import './Projects.css';
 
@@ -64,12 +64,13 @@ const ProjectCard = ({ project, index, totalCards }) => {
                             {project.icon}
                         </motion.div>
                         <div className="project-links">
-                            <MagneticIcon>
-                                <div className="link-circle"><Github size={16} /></div>
-                            </MagneticIcon>
-                            <MagneticIcon>
-                                <div className="link-circle"><ExternalLink size={16} /></div>
-                            </MagneticIcon>
+                            {project.demoUrl && (
+                                <MagneticIcon>
+                                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="link-circle">
+                                        <ExternalLink size={16} />
+                                    </a>
+                                </MagneticIcon>
+                            )}
                         </div>
                     </div>
 
@@ -98,36 +99,38 @@ const Projects = () => {
 
     const projects = [
         {
-            title: "Bloom SaaS",
-            description: "A comprehensive AI-driven analytics dashboard built for scaling startups. Features real-time data processing and predictive user modeling.",
-            tech: ["React", "Node.js", "Python"],
+            title: "Book My CA",
+            description: "BookMyCA is a financial services platform that provides end-to-end solutions including tax filing, GST, accounting, company registration, compliance, audits, and advisory — designed for individuals, startups, and enterprises.",
+            tech: ["Next.js", "Razorpay", "MongoDB"],
             color: "blue",
             icon: <Sparkles size={24} />,
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+            image: "/bookmyca.png",
+            demoUrl: "https://www.bookmyca.in"
         },
         {
-            title: "Jobby Mobile",
-            description: "Next-generation remote job board and hiring platform. Connects premium freelancers to visionary founders instantly.",
-            tech: ["React Native", "Firebase"],
+            title: "ACTTS CRM",
+            description: "A customer relationship management system designed to help businesses manage their customer interactions. Features contact management, lead tracking, and sales analytics to improve customer relationships and sales processes.",
+            tech: ["React", "TypeScript", "Tailwind", "Databases"],
             color: "purple",
-            icon: <Smartphone size={24} />,
-            image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-        },
-        {
-            title: "CredBoost",
-            description: "Fintech platform helping young professionals build and track credit scores through gamified financial habits.",
-            tech: ["Next.js", "Tailwind", "Stripe"],
-            color: "green",
             icon: <Layers size={24} />,
-            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+            image: "/actts-crm.png"
         },
         {
-            title: "MedConnect",
-            description: "HIPAA-compliant telemedicine portal for seamless doctor-patient scheduling and secure video consultations.",
-            tech: ["Vue", "WebRTC", "AWS"],
-            color: "orange",
+            title: "Enterprise Resource Planning Portal",
+            description: "A comprehensive, full-stack enterprise management system designed to streamline project tracking, financial calculations, and invoicing. Features interactive data grids, secure role-based employee management, and robust reporting.",
+            tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+            color: "green",
             icon: <Code2 size={24} />,
-            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
+            image: "/erp.png"
+        },
+        {
+            title: "Hansha Pharmaceuticals",
+            description: "Leading pharmaceutical company website focused on manufacturing and supplying high-quality medicines and healthcare products. Features a product catalogue, responsive design, and optimized fast performance.",
+            tech: ["Next.js", "React", "Tailwind"],
+            color: "orange",
+            icon: <Smartphone size={24} />,
+            image: "/hansha.png",
+            demoUrl: "https://www.hanshapharmaceuticals.in"
         }
     ];
 
