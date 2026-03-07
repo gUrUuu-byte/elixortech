@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MagneticButton from '../Common/MagneticButton';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -45,7 +46,8 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="liquid-badge-wrapper navbar-cta-wrapper">
+        {/* Magnetic Button with an extended hover radius effect */}
+        <MagneticButton className="liquid-badge-wrapper navbar-cta-wrapper" elasticity={0.25} magneticRadius={120}>
           <div className="liquid-badge">
             <span className="badge-content-text">Book a slot ↗</span>
             <div className="liquid-container">
@@ -53,7 +55,7 @@ const Navbar = () => {
               <div className="liquid-wave wave-2"></div>
             </div>
           </div>
-        </div>
+        </MagneticButton>
       </nav>
     </div>
   );

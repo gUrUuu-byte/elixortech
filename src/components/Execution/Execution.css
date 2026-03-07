@@ -1,25 +1,59 @@
-/* EXECUTION SECTION */
 .execution-section {
-    padding: 120px 20px;
+    padding: 160px 20px 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     z-index: 10;
+    /* Reverting to Soft Blue while keeping the "perfect" 40% bottom-up structure and lining */
+    background: linear-gradient(to top, #f0f9ff 0%, #ffffff 600px);
+    overflow: hidden;
+}
+
+/* Granular Pixelated Texture - Masked to Gradient */
+.execution-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    mask-image: linear-gradient(to top, black 0%, transparent 600px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 600px);
+}
+
+/* Finer White Vertical Frequency Lines */
+.execution-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.95) 0px, rgba(255, 255, 255, 0.95) 1.5px, transparent 1.5px, transparent 16px);
+    mask-image: linear-gradient(to top, black 25px, transparent 100px);
+    -webkit-mask-image: linear-gradient(to top, black 25px, transparent 100px);
+    opacity: 0.95;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .execution-bg-glow {
     position: absolute;
-    top: 50px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
+    width: 100%;
     height: 400px;
-    background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(167, 243, 208, 0.1) 40%, transparent 70%);
-    filter: blur(60px);
+    /* Soft cloudy blue glow */
+    background: radial-gradient(circle at bottom, rgba(165, 243, 252, 0.4) 0%, rgba(191, 219, 254, 0.2) 30%, transparent 70%);
+    filter: blur(100px);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
+
 
 .execution-header {
     text-align: center;
@@ -144,19 +178,18 @@
 /* COMPARISON GLASS CARD */
 .comparison-glass-card {
     width: 100%;
-    max-width: 900px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(48px) saturate(180%);
-    -webkit-backdrop-filter: blur(48px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 32px;
-    padding: 60px;
+    max-width: 950px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(40px) saturate(160%);
+    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 40px;
+    padding: 80px 40px;
     box-shadow:
-        0 40px 100px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
-        0 4px 20px rgba(0, 0, 0, 0.05);
+        0 40px 100px rgba(0, 0, 0, 0.03),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     position: relative;
-    z-index: 2;
+    z-index: 5;
     text-align: center;
 }
 
@@ -175,150 +208,85 @@
     margin-bottom: 60px;
 }
 
-/* COMPARISON CARDS LAYOUT */
-.comparison-cards-layout {
+/* BAR LAYOUT */
+.comparison-bars-layout {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     gap: 30px;
-    margin-bottom: 60px;
-    width: 100%;
+    margin: 60px auto;
+    max-width: 700px;
 }
 
-.comp-card {
-    flex: 1;
-    position: relative;
-    border-radius: 24px;
-    padding: 40px;
-    text-align: center;
+.comp-bar {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease;
-    overflow: hidden;
 }
 
-.comp-card-header {
-    margin-bottom: 20px;
+.bar-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bar-pill {
+    flex: 0 0 300px;
+    padding: 18px 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.elixor-pill {
+    background: linear-gradient(135deg, #bef5cb, #8de6a4);
+    color: #166534;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.15);
+}
+
+.others-pill {
+    background: linear-gradient(135deg, #fecdd3, #fb7185);
+    color: #9f1239;
+    box-shadow: 0 10px 30px rgba(225, 29, 72, 0.15);
+}
+
+.pill-glow-icon {
+    background: rgba(255, 255, 255, 0.8);
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    position: relative;
-    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.comp-label {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #475569;
-}
-
-.highlight-label {
-    color: #0f172a;
-    font-weight: 600;
-}
-
-.comp-card-body {
+.bar-metric {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 2;
+    gap: 12px;
 }
 
-.metric-wrapper {
-    display: flex;
-    align-items:baseline;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.comp-metric {
-    font-size: 4.5rem;
+.metric-value {
+    font-size: 3rem;
     font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.05em;
+    color: #0f172a;
 }
 
-.comp-unit {
+.metric-unit {
     font-size: 1.5rem;
-    color: #64748b;
+    color: #94a3b8;
     font-weight: 400;
 }
 
-.value-red {
-    color: #f43f5e;
-}
-
-.value-green {
-    color: #10b981;
-}
-
-.comp-detail {
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.5;
-    max-width: 250px;
-}
-
-/* Specific Card Styles */
-.card-others {
-    background: rgba(241, 245, 249, 0.5); /* Subtle gray */
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
-}
-
-.card-others .comp-unit {
-    color: #94a3b8;
-}
-
-.card-elixor {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 253, 244, 0.6) 100%);
-    border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 
-        0 20px 40px rgba(16, 185, 129, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-    transform: scale(1.05); /* Make it slightly larger to pop */
-    z-index: 5;
-}
-
-.card-elixor:hover {
-    transform: scale(1.08);
-}
-
-.comp-card-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-.card-elixor .comp-detail {
-    color: #334155;
-    font-weight: 500;
-}
-
-/* VS Divider */
-.comp-vs-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 1px solid rgba(226, 232, 240, 1);
-    color: #94a3b8;
-    font-weight: 600;
+.comparison-bottom-note {
     font-size: 0.9rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    z-index: 3;
-    flex-shrink: 0;
+    color: #94a3b8;
+    margin-top: 40px;
+    font-style: italic;
+    opacity: 0.7;
 }
 
 /* Asterisk textual note */
@@ -332,26 +300,13 @@
 }
 
 /* RESPONSIVE */
-    @media (max-width: 900px) {
-    .comparison-cards-layout {
-        flex-direction: column;
-        gap: 20px;
+@media (max-width: 900px) {
+    .comparison-bars-layout {
+        max-width: 100%;
     }
 
-    .comp-card {
-        width: 100%;
-    }
-
-    .card-elixor {
-        transform: scale(1);
-    }
-
-    .card-elixor:hover {
-        transform: scale(1.02);
-    }
-
-    .comp-vs-divider {
-        margin: -10px 0;
+    .bar-pill {
+        flex: 1;
     }
 }
 
@@ -362,5 +317,16 @@
 
     .comparison-glass-card {
         padding: 40px 20px;
+    }
+
+    .bar-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .bar-pill {
+        width: 100%;
+        flex: none;
     }
 }

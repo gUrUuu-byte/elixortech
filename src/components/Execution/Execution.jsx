@@ -75,54 +75,46 @@ const Execution = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeUp}
             >
-                <h3 className="comparison-title">Unmatched Speed to Market</h3>
+                <h3 className="comparison-title">3x Faster Than Traditional Teams</h3>
                 <p className="comparison-desc">
-                    We consistently ship launch-ready MVPs in just 21 days. Traditional teams often<br />
+                    We consistently ship launch-ready MVPs in just 21 days Traditional teams often<br />
                     take 3 to 6 months to reach the same point
                 </p>
 
-                <div className="comparison-cards-layout">
-                    {/* Traditional Teams Card */}
-                    <div className="comp-card card-others">
-                        <div className="comp-card-header">
-                            <span className="comp-label">Traditional Teams</span>
-                        </div>
-                        <div className="comp-card-body">
-                            <div className="metric-wrapper">
-                                <span className="comp-metric value-red">180</span>
-                                <span className="comp-unit">Days</span>
+                <div className="comparison-bars-layout">
+                    {/* ElixorTech Bar */}
+                    <div className="comp-bar elixor-bar">
+                        <div className="bar-main">
+                            <div className="bar-pill elixor-pill">
+                                <span className="pill-text">with ElixorTech</span>
+                                <div className="pill-glow-icon">
+                                    <Zap size={14} fill="#059669" strokeWidth={0} />
+                                </div>
                             </div>
-                            <p className="comp-detail">Slow, unpredictable scopes, and bloated budgets.</p>
+                            <div className="bar-metric">
+                                <span className="metric-value">21</span>
+                                <span className="metric-unit">Days</span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* VS Divider */}
-                    <div className="comp-vs-divider">
-                        <span>VS</span>
-                    </div>
-
-                    {/* ElixorTech Card */}
-                    <div className="comp-card card-elixor">
-                        <div className="comp-card-glow"></div>
-                        <div className="comp-card-header">
-                            <span className="comp-label highlight-label">with ElixorTech</span>
-                            <MagneticIcon className="icon-timer-m">
-                                <Zap size={18} fill="#10b981" strokeWidth={0} />
-                            </MagneticIcon>
-                        </div>
-                        <div className="comp-card-body">
-                            <div className="metric-wrapper">
-                                <span className="comp-metric value-green">21</span>
-                                <span className="comp-unit">Days</span>
+                    {/* Others Bar */}
+                    <div className="comp-bar others-bar">
+                        <div className="bar-main">
+                            <div className="bar-pill others-pill">
+                                <span className="pill-text">with others</span>
                             </div>
-                            <p className="comp-detail">High velocity, fixed pricing, and launch-ready code.</p>
+                            <div className="bar-metric">
+                                <span className="metric-value">180</span>
+                                <span className="metric-unit">Days</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* <p className="comparison-asterisk">
+                <p className="comparison-bottom-note">
                     *The Earth moves 54 million kilometers around the Sun in 21 days, our MVPs orbit the market just as fast
-                </p> */}
+                </p>
             </motion.div>
         </section>
     );

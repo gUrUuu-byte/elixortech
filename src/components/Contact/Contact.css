@@ -1,8 +1,39 @@
 .contact-section {
     position: relative;
-    padding: 8rem 2rem;
+    padding: 160px 2rem 200px;
     overflow: hidden;
-    background-color: var(--color-background);
+    /* Soft Indigo Gradient emerging from bottom - Matching Screenshot Style */
+    background: linear-gradient(to top, #e0e7ff 0%, #ffffff 600px);
+}
+
+/* Granular Pixelated Texture - Masked to Gradient */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    mask-image: linear-gradient(to top, black 0%, transparent 600px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 600px);
+}
+
+/* Finer White Vertical Frequency Lines */
+.contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.95) 0px, rgba(255, 255, 255, 0.95) 1.5px, transparent 1.5px, transparent 16px);
+    mask-image: linear-gradient(to top, black 25px, transparent 100px);
+    -webkit-mask-image: linear-gradient(to top, black 25px, transparent 100px);
+    opacity: 0.95;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .contact-bg-glow {
@@ -34,7 +65,8 @@
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
-    gap: 3rem; /* decreased distance */
+    gap: 3rem;
+    /* decreased distance */
     justify-content: center;
     align-items: center;
     position: relative;
@@ -170,6 +202,7 @@
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
 }
+
 /* React Datepicker Custom Overrides */
 .custom-react-datepicker {
     width: 100%;
@@ -211,13 +244,16 @@
     padding-top: 1rem !important;
 }
 
-.react-datepicker__current-month, .react-datepicker-time__header {
+.react-datepicker__current-month,
+.react-datepicker-time__header {
     color: var(--color-text-primary, #111) !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
 }
 
-.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
     color: var(--color-text-secondary, #555) !important;
     border-radius: 0.5rem !important;
     margin: 0.2rem !important;
@@ -229,7 +265,8 @@
     color: #0284c7 !important;
 }
 
-.react-datepicker__day--selected, .react-datepicker__day--keyboard-selected {
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
     background-color: var(--color-text-primary, #111) !important;
     color: #fff !important;
     font-weight: 600;
@@ -262,7 +299,7 @@
     border-color: #0284c7 !important;
 }
 
-.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, 
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before,
 .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
     border-bottom-color: rgba(255, 255, 255, 0.95) !important;
 }
@@ -316,6 +353,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -327,8 +365,9 @@
         flex-direction: column;
         gap: 4rem;
     }
-    
-    .contact-left, .contact-right {
+
+    .contact-left,
+    .contact-right {
         width: 100%;
     }
 

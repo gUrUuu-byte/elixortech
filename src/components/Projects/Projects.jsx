@@ -5,95 +5,92 @@ import MagneticIcon from '../Common/MagneticIcon';
 import './Projects.css';
 
 const ProjectCard = ({ project, index, totalCards }) => {
-    const cardRef = useRef(null);
-
+    const cardContainerRef = useRef(null);
     const { scrollYProgress } = useScroll({
-        target: cardRef,
-        offset: ["start end", "end start"]
+        target: cardContainerRef,
+        offset: ['start start', 'end start'] // When the card hits the top, start tracking how far it has been scrolled past
     });
 
-    // Cards slide in from alternating sides
-    const isLeft = index % 2 === 0;
-    const xStart = isLeft ? -120 : 120;
+    // As you scroll past this sticky card, it shrinks
+    const targetScale = 1 - ((totalCards - index) * 0.05);
 
-    const x = useTransform(scrollYProgress, [0, 0.25, 0.45, 0.85, 1], [xStart, xStart * 0.3, 0, 0, 0]);
-    const opacity = useTransform(scrollYProgress, [0, 0.15, 0.35, 0.85, 1], [0, 0.4, 1, 1, 0.6]);
-    const scale = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.8, 1], [0.88, 0.94, 1, 1, 0.96]);
-    const rotateY = useTransform(scrollYProgress, [0, 0.3, 0.5], [isLeft ? -6 : 6, isLeft ? -2 : 2, 0]);
-    const blur = useTransform(scrollYProgress, [0, 0.2, 0.35], [8, 3, 0]);
-    const imageScale = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [1.15, 1.05, 1]);
+    // Cards scale down to targetScale as they are scrolled past. 
+    // Once scrollYProgress reaches 1 (fully scrolled past), it hits targetScale.
+    const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
-    // Glow pulse tied to scroll
-    const glowOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0.3, 0.9, 0.5]);
+    // As you scroll past, dim the card
+    const dimOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.6]);
 
     return (
-        <motion.div
-            ref={cardRef}
-            className={`project-card-horizontal card-${project.color} ${index % 2 !== 0 ? 'image-right' : 'image-left'}`}
+        <div
+            className="project-card-wrapper"
+            ref={cardContainerRef}
             style={{
-                x,
-                opacity,
-                scale,
-                rotateY,
-                filter: blur.get ? undefined : undefined,
-                perspective: 1200,
+                height: '100vh', // Each wrapper takes full viewport height to provide scroll distance
+                position: 'relative',
+                marginBottom: index === totalCards - 1 ? '0' : '40vh' // Space between cards to see the scroll effect
             }}
         >
-            <motion.div className="project-card-glow" style={{ opacity: glowOpacity }} />
+            <motion.div
+                className={`project-card-horizontal card-${project.color} ${index % 2 !== 0 ? 'image-right' : 'image-left'}`}
+                style={{
+                    scale,
+                    top: `calc(100px + ${index * 40}px)`, // Sticky gap
+                    position: 'sticky',
+                    transformOrigin: 'top center',
+                    zIndex: index // Ensure later cards overlap correctly
+                }}
+            >
+                {/* Dimming overlay when card gets stacked upon */}
+                <motion.div className="project-stacked-dim" style={{ opacity: dimOpacity }} />
 
-            <div className="project-image-container">
-                <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                    style={{ scale: imageScale }}
-                />
-                <div className="project-image-overlay" />
-            </div>
+                <div className="project-card-glow" />
 
-            <div className="project-content-horizontal">
-                <div className="project-top">
-                    <motion.div
-                        className="project-icon-box"
-                        whileHover={{ rotate: [0, -10, 10, -5, 0], transition: { duration: 0.5 } }}
-                    >
-                        {project.icon}
-                    </motion.div>
-                    <div className="project-links">
-                        <MagneticIcon>
-                            <div className="link-circle"><Github size={16} /></div>
-                        </MagneticIcon>
-                        <MagneticIcon>
-                            <div className="link-circle"><ExternalLink size={16} /></div>
-                        </MagneticIcon>
+                <div className="project-image-container">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="project-image"
+                    />
+                    <div className="project-image-overlay" />
+                </div>
+
+                <div className="project-content-horizontal">
+                    <div className="project-top">
+                        <motion.div
+                            className="project-icon-box"
+                            whileHover={{ rotate: [0, -10, 10, -5, 0], transition: { duration: 0.5 } }}
+                        >
+                            {project.icon}
+                        </motion.div>
+                        <div className="project-links">
+                            <MagneticIcon>
+                                <div className="link-circle"><Github size={16} /></div>
+                            </MagneticIcon>
+                            <MagneticIcon>
+                                <div className="link-circle"><ExternalLink size={16} /></div>
+                            </MagneticIcon>
+                        </div>
+                    </div>
+
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-desc">{project.description}</p>
+
+                    <div className="project-tech-stack">
+                        {project.tech.map((tech, i) => (
+                            <span key={i} className="tech-tag">
+                                {tech}
+                            </span>
+                        ))}
                     </div>
                 </div>
-
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.description}</p>
-
-                <div className="project-tech-stack">
-                    {project.tech.map((tech, i) => (
-                        <motion.span
-                            key={i}
-                            className="tech-tag"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
-                            viewport={{ once: true }}
-                        >
-                            {tech}
-                        </motion.span>
-                    ))}
-                </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     );
 };
 
 const Projects = () => {
     const sectionRef = useRef(null);
-
     const fadeUp = {
         hidden: { opacity: 0, y: 40 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 80 } }
