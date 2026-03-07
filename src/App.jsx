@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero';
 import Features from './components/Features/Features';
 import Process from './components/Process/Process';
 import Execution from './components/Execution/Execution';
+import Projects from './components/Projects/Projects';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
@@ -28,6 +29,7 @@ function App() {
         <Features />
         <Process />
         <Execution />
+        <Projects />
       </main>
 
       <Footer />

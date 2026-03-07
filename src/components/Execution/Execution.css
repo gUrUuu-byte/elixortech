@@ -175,106 +175,150 @@
     margin-bottom: 60px;
 }
 
-/* CHART SECTION */
-.comparison-chart {
+/* COMPARISON CARDS LAYOUT */
+.comparison-cards-layout {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
     margin-bottom: 60px;
     width: 100%;
 }
 
-.chart-row {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    width: 100%;
-}
-
-.bar-wrapper {
+.comp-card {
     flex: 1;
+    position: relative;
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
     display: flex;
-    justify-content: flex-start;
-    border-radius: 99px;
-    background: rgba(0, 0, 0, 0.03);
-    /* subtle track to show empty space for ignt labs */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
-.chart-bar {
-    padding: 16px 24px;
-    border-radius: 99px;
+.comp-card-header {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.comp-label {
     font-size: 1.1rem;
     font-weight: 500;
-    /* Soft animation when loading page */
-    animation: growBar 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    transform-origin: left;
+    color: #475569;
 }
 
-@keyframes growBar {
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
-}
-
-/* ElixorTech Green Bar */
-.bar-elixor {
-    width: 35%;
-    /* Representing 21 days compactly */
-    background: linear-gradient(90deg, #bbf7d0, #86efac);
-    box-shadow:
-        0 10px 20px rgba(34, 197, 94, 0.15),
-        inset 0 2px 4px rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+.highlight-label {
     color: #0f172a;
-    justify-content: center;
+    font-weight: 600;
 }
 
-.icon-timer {
-    margin-left: 8px;
-}
-
-.icon-timer-m {
-    margin-left: 8px;
+.comp-card-body {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
-/* Traditional Teams Red Bar */
-.bar-others {
-    width: 100%;
-    /* Representing 180 days fully */
-    background: linear-gradient(90deg, #fecdd3, #fb7185);
-    color: #881337;
-    box-shadow:
-        0 10px 20px rgba(244, 63, 94, 0.1),
-        inset 0 2px 4px rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    justify-content: center;
+.metric-wrapper {
+    display: flex;
+    align-items:baseline;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
-.chart-value {
+.comp-metric {
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.comp-unit {
     font-size: 1.5rem;
+    color: #64748b;
     font-weight: 400;
-    white-space: nowrap;
-    width: 100px;
-    /* Fixed width to align nicely */
-    text-align: left;
-}
-
-.value-dark {
-    color: #0f172a;
 }
 
 .value-red {
-    color: #e11d48;
+    color: #f43f5e;
+}
+
+.value-green {
+    color: #10b981;
+}
+
+.comp-detail {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.5;
+    max-width: 250px;
+}
+
+/* Specific Card Styles */
+.card-others {
+    background: rgba(241, 245, 249, 0.5); /* Subtle gray */
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.card-others .comp-unit {
+    color: #94a3b8;
+}
+
+.card-elixor {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 253, 244, 0.6) 100%);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 
+        0 20px 40px rgba(16, 185, 129, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    transform: scale(1.05); /* Make it slightly larger to pop */
+    z-index: 5;
+}
+
+.card-elixor:hover {
+    transform: scale(1.08);
+}
+
+.comp-card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card-elixor .comp-detail {
+    color: #334155;
+    font-weight: 500;
+}
+
+/* VS Divider */
+.comp-vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 1);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 3;
+    flex-shrink: 0;
 }
 
 /* Asterisk textual note */
@@ -288,6 +332,29 @@
 }
 
 /* RESPONSIVE */
+    @media (max-width: 900px) {
+    .comparison-cards-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .comp-card {
+        width: 100%;
+    }
+
+    .card-elixor {
+        transform: scale(1);
+    }
+
+    .card-elixor:hover {
+        transform: scale(1.02);
+    }
+
+    .comp-vs-divider {
+        margin: -10px 0;
+    }
+}
+
 @media (max-width: 768px) {
     .execution-headline {
         font-size: 2.2rem;
@@ -295,28 +362,5 @@
 
     .comparison-glass-card {
         padding: 40px 20px;
-    }
-
-    .chart-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .bar-wrapper {
-        width: 100%;
-    }
-
-    .bar-ignyt {
-        width: 100%;
-        /* Full width on mobile to comfortably fit text */
-    }
-
-    .chart-value {
-        width: auto;
-        padding-left: 24px;
-        order: -1;
-        /* Place text above bar on mobile */
-        margin-bottom: -4px;
     }
 }
