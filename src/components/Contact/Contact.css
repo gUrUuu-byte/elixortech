@@ -1,0 +1,338 @@
+.contact-section {
+    position: relative;
+    padding: 8rem 2rem;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+.contact-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glow-1 {
+    top: -10%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-primary), transparent 70%);
+}
+
+.glow-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-secondary), transparent 70%);
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem; /* decreased distance */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Left Side Styles */
+.contact-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-badge {
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+
+.contact-headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary, #111);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #0284c7 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-motivational {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary, #555);
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.contact-saying {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-left: 4px solid #0284c7;
+    border-radius: 0 1rem 1rem 0;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text-primary, #111);
+    position: relative;
+}
+
+.saying-author {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-style: normal;
+    color: #0284c7;
+    font-weight: 600;
+}
+
+/* Right Side Styles & Form */
+.contact-right {
+    flex: 1;
+    width: 100%;
+}
+
+.contact-form-glass {
+    background: var(--color-glass-bg, rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-glass-border, rgba(255, 255, 255, 0.4));
+    border-radius: 1.5rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+}
+
+.form-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.5), transparent);
+}
+
+.elixor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #555);
+    font-weight: 500;
+}
+
+.input-group input,
+.input-group textarea {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    color: var(--color-text-primary, #111);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #0284c7;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+/* React Datepicker Custom Overrides */
+.custom-react-datepicker {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    color: var(--color-text-primary, #111);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-react-datepicker:focus {
+    outline: none;
+    border-color: #0284c7;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+/* Glassmorphism for the calendar popup */
+.react-datepicker {
+    font-family: inherit !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1) !important;
+    padding: 0.5rem;
+}
+
+.react-datepicker__header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding-top: 1rem !important;
+}
+
+.react-datepicker__current-month, .react-datepicker-time__header {
+    color: var(--color-text-primary, #111) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    color: var(--color-text-secondary, #555) !important;
+    border-radius: 0.5rem !important;
+    margin: 0.2rem !important;
+    transition: all 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+    background-color: rgba(2, 132, 199, 0.1) !important;
+    color: #0284c7 !important;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--keyboard-selected {
+    background-color: var(--color-text-primary, #111) !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.react-datepicker__time-container {
+    border-left: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item {
+    transition: all 0.2s ease;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
+    background-color: rgba(2, 132, 199, 0.1) !important;
+    color: #0284c7 !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+    background-color: var(--color-text-primary, #111) !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: #555 !important;
+}
+
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+    border-color: #0284c7 !important;
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, 
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
+    border-bottom-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    margin-top: 1rem;
+    background: var(--color-text-primary, #111);
+    color: #fff;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: #64748b;
+}
+
+.submit-btn.success {
+    background: #10b981;
+}
+
+.spin-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+    
+    .contact-left, .contact-right {
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}

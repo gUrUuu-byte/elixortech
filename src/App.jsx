@@ -5,6 +5,7 @@ import Features from './components/Features/Features';
 import Process from './components/Process/Process';
 import Execution from './components/Execution/Execution';
 import Projects from './components/Projects/Projects';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
         <Process />
         <Execution />
         <Projects />
+        <Contact />
       </main>
 
       <Footer />
