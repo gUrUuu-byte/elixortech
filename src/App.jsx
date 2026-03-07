@@ -18,10 +18,10 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Hide the loader after 2.5 seconds (to show off the neat animation)
+    // Hide the loader after 1.5 seconds
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
   useEffect(() => {

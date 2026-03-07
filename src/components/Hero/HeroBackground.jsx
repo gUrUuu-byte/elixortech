@@ -226,6 +226,13 @@ const ParticleEcosystem = ({ mouse }) => {
 // MAIN COMPONENT & LAYER 5 AMBIENT LIGHT
 // -------------------------------------------------------------
 const HeroBackground3D = () => {
+    // Detect mobile / touch devices — skip heavy WebGL entirely
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const mobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+        setIsMobile(mobile);
+    }, []);
+
     // We use normalized motion values for mouse: -1 to 1
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -266,12 +273,14 @@ const HeroBackground3D = () => {
                 style={{ x: moveX2, y: moveY2 }}
             />
 
-            {/* Canvas layer */}
-            <Canvas camera={{ position: [0, 0, 15], fov: 45 }} dpr={[1, 2]} gl={{ antialias: false, alpha: true }}>
-                <ambientLight intensity={0.5} />
-                <DeepSpaceField />
-                <ParticleEcosystem mouse={rawMouse} />
-            </Canvas>
+            {/* Canvas layer — only render on desktop to avoid mobile freeze */}
+            {!isMobile && (
+                <Canvas camera={{ position: [0, 0, 15], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: false, alpha: true }}>
+                    <ambientLight intensity={0.5} />
+                    <DeepSpaceField />
+                    <ParticleEcosystem mouse={rawMouse} />
+                </Canvas>
+            )}
 
             {/* Overlays to blend with page context */}
             <div className="hero-3d-vignette" />
