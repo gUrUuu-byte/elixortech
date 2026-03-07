@@ -27,6 +27,14 @@ function App() {
   useEffect(() => {
     // Initialize Lenis for buttery smooth scrolling, which makes
     // scroll-linked animations (like the sticky projects) look perfect.
+    // Disable Lenis smooth scrolling entirely on mobile / touch devices.
+    // Native scrolling is vastly superior on mobile and Lenis can cause lockups.
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+    
+    if (isTouch) {
+      return; // Skip initialization entirely
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -35,7 +43,6 @@ function App() {
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
-      touchMultiplier: 2,
       infinite: false,
     });
 
