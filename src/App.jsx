@@ -7,6 +7,7 @@ import Execution from './components/Execution/Execution';
 import Projects from './components/Projects/Projects';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import AmbientBackground from './components/AmbientBackground/AmbientBackground';
 import './App.css';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         <div className="blob blob-2"></div>
         <div className="blob blob-3"></div>
       </div>
+
+      {/* Subtle ambient floating elements */}
+      <AmbientBackground />
 
       <Navbar />
 
