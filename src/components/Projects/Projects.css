@@ -46,7 +46,7 @@
     max-width: 600px;
 }
 
-/* PROJECTS LIST (Horizontal Cards) */
+/* PROJECTS LIST */
 .projects-list {
     display: flex;
     flex-direction: column;
@@ -55,6 +55,7 @@
     max-width: 1140px;
     position: relative;
     z-index: 2;
+    perspective: 1200px;
 }
 
 /* PROJECT CARD HORIZONTAL */
@@ -70,9 +71,11 @@
         inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: stretch;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     overflow: hidden;
     min-height: 400px;
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease;
 }
 
 .project-card-horizontal.image-right {
@@ -80,11 +83,13 @@
 }
 
 .project-card-horizontal:hover {
-    transform: translateY(-10px);
     box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.08),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+        0 30px 80px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(100, 200, 255, 0.08);
 }
+
+
 
 .project-image-container {
     flex: 1.2;
@@ -97,42 +102,62 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    will-change: transform;
+    transition: filter 0.6s ease;
 }
 
 .project-card-horizontal:hover .project-image {
-    transform: scale(1.05); /* subtle zoom on hover */
+    filter: brightness(1.05) contrast(1.02);
+}
+
+/* Subtle gradient overlay on image for depth */
+.project-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.03) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .project-card-glow {
     position: absolute;
     top: -50px;
     right: -50px;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    filter: blur(80px); /* Increased blur because container is wider */
-    opacity: 0.5;
+    filter: blur(80px);
     z-index: 0;
-    transition: opacity 0.4s ease;
+    will-change: opacity;
+    transition: transform 0.6s ease;
 }
 
 .project-card-horizontal:hover .project-card-glow {
-    opacity: 0.8;
+    transform: scale(1.3);
 }
 
 /* Card Specific Colors */
 .card-blue .project-card-glow { background: rgba(56, 189, 248, 0.4); }
 .card-blue .project-icon-box { color: #0284c7; background: #e0f2fe; }
 
+
 .card-purple .project-card-glow { background: rgba(192, 132, 252, 0.4); }
 .card-purple .project-icon-box { color: #7e22ce; background: #f3e8ff; }
+
 
 .card-green .project-card-glow { background: rgba(74, 222, 128, 0.4); }
 .card-green .project-icon-box { color: #16a34a; background: #dcfce7; }
 
+
 .card-orange .project-card-glow { background: rgba(251, 146, 60, 0.4); }
 .card-orange .project-icon-box { color: #ea580c; background: #ffedd5; }
+
 
 .project-top {
     display: flex;
@@ -151,6 +176,12 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.project-icon-box:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .project-links {
@@ -169,12 +200,13 @@
     justify-content: center;
     color: #475569;
     cursor: pointer;
-    transition: color 0.2s ease, background 0.2s ease;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .link-circle:hover {
     color: #0f172a;
     background: #ffffff;
+    transform: translateY(-2px);
 }
 
 .project-content-horizontal {
@@ -199,7 +231,7 @@
     color: #475569;
     line-height: 1.6;
     margin-bottom: 32px;
-    flex: 1; /* Pushes tech stack to bottom */
+    flex: 1;
 }
 
 .project-tech-stack {
@@ -218,6 +250,13 @@
     border: 1px solid rgba(226, 232, 240, 0.8);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(226, 232, 240, 0.9);
+    color: #334155;
+    border-color: rgba(203, 213, 225, 1);
 }
 
 /* RESPONSIVE */
@@ -241,4 +280,4 @@
     .projects-headline {
         font-size: 2.2rem;
     }
-}
+} 
