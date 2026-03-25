@@ -1,13 +1,4 @@
-# Elixor Technologies - robots.txt
-# https://www.elixortechnologies.com
-
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://www.elixortechnologies.com/sitemap.xml
-
-# Disallow admin/system paths
-Disallow: /api/
-Disallow: /.env
-Disallow: /node_modules/

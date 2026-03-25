@@ -81,7 +81,7 @@ const Process = () => {
                             </p>
                         </motion.div>
                         <motion.div className="step-visual" variants={slideInRight}>
-                            <div className="visual-pill-wrapper dotted-bg flex-center">
+                            <div className="visual-pill-wrapper dotted-bg flex-center" aria-hidden="true">
                                 {/* Connecting Idea Nodes Simulation */}
                                 <div className="discovery-nodes-wrapper">
                                     <div className="node-center">
@@ -130,7 +130,7 @@ const Process = () => {
                         </motion.div>
                         <motion.div className="step-visual" variants={slideInLeft}>
                             {/* Tilted layered cards simulation */}
-                            <div className="tilted-cards-wrapper">
+                            <div className="tilted-cards-wrapper" aria-hidden="true">
                                 <div className="tilted-card card-back"></div>
                                 <div className="tilted-card card-mid"></div>
                                 <div className="tilted-card card-front">
@@ -164,7 +164,7 @@ const Process = () => {
                             </p>
                         </motion.div>
                         <motion.div className="step-visual" variants={slideInRight}>
-                            <div className="visual-pill-wrapper dark-bg">
+                            <div className="visual-pill-wrapper dark-bg" aria-hidden="true">
                                 <div className="code-block-mock">
                                     <span className="code-line keyword">import</span> React <span className="code-line keyword">from</span> <span className="code-line string">'react'</span>;<br />
                                     <span className="code-line keyword">const</span> <span className="code-line function">App</span> = () =&gt; {'{'}<br />
@@ -205,7 +205,7 @@ const Process = () => {
                             </p>
                         </motion.div>
                         <motion.div className="step-visual" variants={slideInLeft}>
-                            <div className="visual-pill-wrapper bright-bg">
+                            <div className="visual-pill-wrapper bright-bg" aria-hidden="true">
                                 {/* Central glow and rocket */}
                                 <div className="center-glow"></div>
                                 <div className="rocket-badge">

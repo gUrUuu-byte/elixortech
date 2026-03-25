@@ -14,6 +14,7 @@ const projects = [
         icon: <Sparkles size={24} />,
         image: "/bookmyca.png",
         demoUrl: "https://www.bookmyca.in",
+        altText: "BookMyCA - Financial SaaS platform built by Elixor MVP development company",
     },
     {
         title: "ACTTS CRM",
@@ -23,6 +24,7 @@ const projects = [
         color: "purple",
         icon: <Layers size={24} />,
         image: "/actts-crm.png",
+        altText: "ACTTS CRM - Custom SaaS customer relationship management system engineered by Elixor",
     },
     {
         title: "Enterprise Resource Planning Portal",
@@ -32,6 +34,7 @@ const projects = [
         color: "green",
         icon: <Code2 size={24} />,
         image: "/erp.png",
+        altText: "ERP Portal - Enterprise web app and SaaS development by Elixor Technologies",
     },
     {
         title: "Hansha Pharmaceuticals",
@@ -42,6 +45,7 @@ const projects = [
         icon: <Smartphone size={24} />,
         image: "/hansha.png",
         demoUrl: "https://www.hanshapharmaceuticals.in",
+        altText: "Hansha Pharmaceuticals - High performance corporate website built by modern development agency",
     },
 ];
 
@@ -59,7 +63,7 @@ const ProjectCard = ({ project, index, isLast }) => {
 
             {/* Image side */}
             <div className="stack-card-image">
-                <img src={project.image} alt={`${project.title} — project screenshot by Elixor Technologies`} loading="lazy" />
+                <img src={project.image} alt={project.altText || `${project.title} — project screenshot`} loading="lazy" width="800" height="600" />
                 <div className="stack-card-image-overlay" />
             </div>
 
@@ -85,6 +89,7 @@ const ProjectCard = ({ project, index, isLast }) => {
                                     rel="noopener noreferrer"
                                     className="link-circle"
                                     aria-label={`Visit ${project.title} live demo`}
+                                    title={`View Live Demo of ${project.title} Application`}
                                 >
                                     <ExternalLink size={16} />
                                 </a>
@@ -101,6 +106,22 @@ const ProjectCard = ({ project, index, isLast }) => {
                         <span key={i} className="tech-tag">{t}</span>
                     ))}
                 </div>
+
+                {/* Dynamic SEO Structured Data */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": project.title,
+                        "operatingSystem": "Web",
+                        "applicationCategory": "BusinessApplication",
+                        "description": project.description,
+                        "creator": {
+                            "@type": "Organization",
+                            "name": "Elixor Technologies"
+                        }
+                    })
+                }} />
             </div>
         </div>
     );

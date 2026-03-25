@@ -53,6 +53,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
                 onClick={onToggle}
                 aria-expanded={isOpen}
                 id={`faq-btn-${index}`}
+                title={`Toggle Answer for: ${item.question}`}
             >
                 <span className="faq-q-text">{item.question}</span>
                 <span className={`faq-chevron ${isOpen ? 'rotated' : ''}`}>

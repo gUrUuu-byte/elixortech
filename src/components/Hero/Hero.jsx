@@ -48,9 +48,9 @@ const Hero = () => {
                 <motion.div className="hero-badge-container" variants={itemVariants}>
                     <div className="hero-trust-badge">
                         <div className="avatar-group">
-                            <img src="https://i.pravatar.cc/100?img=11" alt="Startup founder testimonial avatar" loading="lazy" />
-                            <img src="https://i.pravatar.cc/100?img=12" alt="Startup founder testimonial avatar" loading="lazy" />
-                            <img src="https://i.pravatar.cc/100?img=13" alt="Startup founder testimonial avatar" loading="lazy" />
+                            <img src="https://i.pravatar.cc/100?img=11" alt="Startup founder testimonial for Elixor MVP development agency" loading="lazy" width="40" height="40" />
+                            <img src="https://i.pravatar.cc/100?img=12" alt="SaaS platform founder review for Elixor Technologies" loading="lazy" width="40" height="40" />
+                            <img src="https://i.pravatar.cc/100?img=13" alt="Tech startup CEO testimonial on rapid product development" loading="lazy" width="40" height="40" />
                         </div>
                         <span className="badge-text">Loved by forward-thinking startups.</span>
                         <span className="badge-highlight">⚡ FAST</span>
